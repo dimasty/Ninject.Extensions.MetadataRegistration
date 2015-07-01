@@ -11,7 +11,13 @@
     <releaseNotes>https://github.com/dvabuzyarov/Ninject.Extensions.MetadataRegistration/blob/master/README.md</releaseNotes>
     <language>en-US</language>
     <tags>Ninject ioc di attributes configuration registration reflection</tags>
-    <iconUrl>https://github.com/dvabuzyarov/Ninject.Extensions.MetadataRegistration</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/dvabuzyarov/Ninject.Extensions.MetadataRegistration/master/logo.png</iconUrl>
     <projectUrl>https://github.com/dvabuzyarov/Ninject.Extensions.MetadataRegistration</projectUrl>
+    <dependencies>
+      <dependency id="Ninject" version="" />
+    </dependencies>
   </metadata>
+    <files>
+       <file src="..\**\bin\Release\Ninject.Extensions.MetadataRegistration.dll " target="lib\net40" /> 
+    </files>
 </package>

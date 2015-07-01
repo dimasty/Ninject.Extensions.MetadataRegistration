@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Ninject.Extensions.MetadataRegistration")]
 [assembly: AssemblyDescription("Author: Ninject.Extensions.MetadataRegistration Project Contributors")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("dvabuzyarov@gmail.com")]
 [assembly: AssemblyProduct("Ninject.Extensions.MetadataRegistration")]
 [assembly: AssemblyCopyright("Copyright © 2015")]
 [assembly: AssemblyTrademark("")]
