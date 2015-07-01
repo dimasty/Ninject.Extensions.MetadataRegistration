@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Ninject.Extensions.MetadataRegistration")]
-[assembly: AssemblyDescription("Author: dvabuzyarov@gmail.com")]
+[assembly: AssemblyDescription("Author: Ninject.Extensions.MetadataRegistration Project Contributors")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Ninject.Extensions.MetadataRegistration")]
