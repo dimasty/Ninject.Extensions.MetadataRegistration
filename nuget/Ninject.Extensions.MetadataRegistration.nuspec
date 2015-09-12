@@ -2,7 +2,7 @@
 <package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <id>Ninject.Extensions.MetadataRegistration</id>
-    <version>0.0.1-alfa</version>
+    <version>0.0.1</version>
     <authors>Ninject.Extensions.MetadataRegistration Project Contributors</authors>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <licenseUrl>https://raw.githubusercontent.com/dvabuzyarov/Ninject.Extensions.MetadataRegistration/master/LICENSE</licenseUrl>
