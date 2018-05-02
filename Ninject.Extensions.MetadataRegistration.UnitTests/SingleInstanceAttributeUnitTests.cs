@@ -29,7 +29,7 @@ namespace Ninject.Extensions.MetadataRegistration.UnitTests
                 .GetCustomAttributes(typeof(SingleInstanceAttribute), false)
                 .OfType<SingleInstanceAttribute>().Single();
 
-            singleInstanceAttributeInstance.Register(builderMock.Object);
+            singleInstanceAttributeInstance.Register(builderMock.Object, null);
 
             builderMock.Verify();
         }       

@@ -1,4 +1,5 @@
 using System;
+using Ninject.Activation;
 
 namespace Ninject.Extensions.MetadataRegistration.RegistrationAttributes
 {
@@ -17,7 +18,7 @@ namespace Ninject.Extensions.MetadataRegistration.RegistrationAttributes
             _asTypes = asTypes;
         }
 
-        public IBindingBuilder Register(IBindingBuilder builder)
+        public IBindingBuilder Register(IBindingBuilder builder, Func<IContext, object> contextProvider)
         {
             foreach (var type in _asTypes)
             {

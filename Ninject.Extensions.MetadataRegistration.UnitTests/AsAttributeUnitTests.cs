@@ -38,7 +38,7 @@ namespace Ninject.Extensions.MetadataRegistration.UnitTests
                     .GetCustomAttributes(typeof(AsAttribute), false)
                     .OfType<AsAttribute>().Single();
 
-            asAttributeInstance.Register(builderMock.Object);
+            asAttributeInstance.Register(builderMock.Object, null);
 
             listMock.Verify(list => list.Add(typeof(TestClass)), Times.Once);
         }       
@@ -54,7 +54,7 @@ namespace Ninject.Extensions.MetadataRegistration.UnitTests
                     .GetCustomAttributes(typeof(AsAttribute), false)
                     .OfType<AsAttribute>().Single();
 
-            asAttributeInstance.Register(builderMock.Object);
+            asAttributeInstance.Register(builderMock.Object, null);
 
             listMock.Verify(list => list.Add(typeof(TestClass)), Times.Once);
             listMock.Verify(list => list.Add(typeof(IMultipleInterface)), Times.Once);

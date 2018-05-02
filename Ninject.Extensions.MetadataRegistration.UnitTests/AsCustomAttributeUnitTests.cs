@@ -2,7 +2,10 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Ninject.Activation;
+using Ninject.Activation.Providers;
 using Ninject.Extensions.MetadataRegistration.Registrations;
+using Ninject.Planning.Bindings;
 
 namespace Ninject.Extensions.MetadataRegistration.UnitTests
 {
@@ -11,9 +14,12 @@ namespace Ninject.Extensions.MetadataRegistration.UnitTests
     {
         private class TestRegistration: INinjectCustomRegistration
         {
-            public void Register(Type type, IKernel kernel)
+            public void Register(Type type, IKernel kernel, Func<IContext, object> contextProvider)
             {
-                kernel.Unbind(type);
+                var binding = new Binding(type);
+                binding.BindingConfiguration.ScopeCallback = contextProvider;
+                binding.BindingConfiguration.Target = BindingTarget.Type;
+                kernel.AddBinding(binding);
             }
         }
 
@@ -27,14 +33,23 @@ namespace Ninject.Extensions.MetadataRegistration.UnitTests
         public void InvokesRegistar()
         {
             var kernelMock = new Mock<IKernel>();
+            Func<IContext, object> contextProvider = context => null;
 
-            var customAttribute = typeof(TestClass)
+            var prototype = typeof(TestClass);
+            var customAttribute = prototype
                 .GetCustomAttributes(typeof(AsCustomAttribute), false)
                 .OfType<AsCustomAttribute>().Single();
 
-            customAttribute.Register(typeof(TestClass), kernelMock.Object);
+            customAttribute.Register(prototype, kernelMock.Object, contextProvider);
 
-            kernelMock.Verify(kernel => kernel.Unbind(typeof(TestClass)), Times.Once);
+            var binding = new Binding(prototype);
+            binding.BindingConfiguration.ScopeCallback = contextProvider;
+            binding.BindingConfiguration.ProviderCallback = StandardProvider.GetCreationCallback(prototype);
+            binding.BindingConfiguration.Target = BindingTarget.Type;
+            kernelMock.Verify(kernel => kernel.AddBinding(It.Is<Binding>(value =>
+            value.BindingConfiguration.ScopeCallback == contextProvider
+                       && value.BindingConfiguration.Target == BindingTarget.Type
+            )), Times.Once);
         }       
     }
 }

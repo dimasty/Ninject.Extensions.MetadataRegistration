@@ -1,4 +1,5 @@
 using System;
+using Ninject.Activation;
 
 namespace Ninject.Extensions.MetadataRegistration.Registrations
 {
@@ -12,10 +13,10 @@ namespace Ninject.Extensions.MetadataRegistration.Registrations
             _customRegistrationHandler = customRegistrationHandler;
         }
 
-        public void Register(Type type, IKernel kernel)
+        public void Register(Type type, IKernel kernel, Func<IContext, object> contextProvider)
         {
-            var registration = (INinjectCustomRegistration)Activator.CreateInstance(_customRegistrationHandler);
-            registration.Register(type, kernel);
+            var registration = (INinjectCustomRegistration) Activator.CreateInstance(_customRegistrationHandler);
+            registration.Register(type, kernel, contextProvider);
         }
     }
 }
